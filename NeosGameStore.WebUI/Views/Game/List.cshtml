@@ -1,0 +1,16 @@
+﻿@using NeosGameStore.WebUI.Models
+@using NeosGameStore.WebUI.HtmlHelpers
+@model GamesListViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+
+@foreach (var p in Model.Games)
+{
+    @Html.Partial("GameSummary",p)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurentCategory }))
+</div>
